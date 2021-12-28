@@ -31,7 +31,7 @@ public class UserRestService {
 	
 	@PostMapping("/registre")
 	public User SaveUser(@RequestBody UserForm userForm){
-		return userService.saveUser(userForm.getNom() ,userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPasssword(),userForm.getAdresse(),userForm.getTel());
+		return userService.saveUser( userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPasssword(),userForm.getEmail(),userForm.getAdresse(),userForm.getTel());
 	}
 	
 	
@@ -74,20 +74,22 @@ public class UserRestService {
 
 
 class UserForm {
-	private String nom;
+	
 	private String username;
 	private String password;
 	private String confirmedPasssword;
+	private String email;
 	private String adresse;
 	private String tel;
 
-	public UserForm(String nom, String username, String password, String confirmedPasssword, String adresse,
+	public UserForm( String username, String password, String confirmedPasssword,String email, String adresse,
 			String tel) {
 		super();
-		this.nom = nom;
+		
 		this.username = username;
 		this.password = password;
 		this.confirmedPasssword = confirmedPasssword;
+		this.email = email;
 		this.adresse = adresse;
 		this.tel = tel;
 	}
@@ -122,12 +124,12 @@ class UserForm {
 	}
 
 	
-	public String getNom() {
-		return nom;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAdresse() {

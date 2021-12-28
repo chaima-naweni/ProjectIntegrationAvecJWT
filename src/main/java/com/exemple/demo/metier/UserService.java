@@ -53,15 +53,16 @@ public class UserService implements AuthenticationUserDetailsService, UserDetail
 	
 	
 	
-	public User saveUser(String nom,String username, String password, String confirmedPassword,String adresse,String tel) {
+	public User saveUser(String username, String password, String confirmedPassword,String email,String adresse,String tel) {
 		 User appUser = new User();
 		 if (userRepository.findUserWithName(username).isPresent() == true)
 		 throw new RuntimeException("User already exists");
 		 
 		 if (!password.equals(confirmedPassword))
 		 throw new RuntimeException("Please confirm your password");
-		 appUser.setNom(nom);
+		
 		 appUser.setUsername(username);
+		 appUser.setEmail(email);
 		 appUser.setAdresse(adresse);
 		 appUser.setTel(tel);
 		 Set<Role> roles = new HashSet<Role>();
