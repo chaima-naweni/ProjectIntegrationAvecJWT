@@ -17,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
@@ -25,6 +26,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
 import com.exemple.demo.metier.UserService;
+
+import com.exemple.demo.securite.AppAuthProvider;
 
 
 
@@ -57,10 +60,11 @@ public AccessDeniedHandler  accessDeniedHandler() {
 	}
 
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
-	}
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	auth.userDetailsService(userDetailsService);
+}
+
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
@@ -133,5 +137,6 @@ public AccessDeniedHandler  accessDeniedHandler() {
 			provider.setUserDetailsService(userDetailsService);
 			return provider;
 		}
+
 
 }

@@ -1,11 +1,15 @@
 package com.exemple.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,6 +29,12 @@ public class Client implements Serializable {
 	private String adresseClient;
 	@Column(name="telClient")
 	private String telClient;
+	
+	
+	
+	@OneToMany(mappedBy="client",fetch = FetchType.LAZY)
+	private List<Facture> factures = new ArrayList<Facture>();
+	
 	public Client(long id, String nomClient, String passwordClient, String emailClient, String adresseClient,
 			String telClient) {
 		super();

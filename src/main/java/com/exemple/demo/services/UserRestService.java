@@ -31,7 +31,7 @@ public class UserRestService {
 	
 	@PostMapping("/registre")
 	public User SaveUser(@RequestBody UserForm userForm){
-		return userService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPasssword());
+		return userService.saveUser(userForm.getNom() ,userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPasssword(),userForm.getAdresse(),userForm.getTel());
 	}
 	
 	
@@ -74,9 +74,28 @@ public class UserRestService {
 
 
 class UserForm {
+	private String nom;
 	private String username;
 	private String password;
 	private String confirmedPasssword;
+	private String adresse;
+	private String tel;
+
+	public UserForm(String nom, String username, String password, String confirmedPasssword, String adresse,
+			String tel) {
+		super();
+		this.nom = nom;
+		this.username = username;
+		this.password = password;
+		this.confirmedPasssword = confirmedPasssword;
+		this.adresse = adresse;
+		this.tel = tel;
+	}
+
+	public UserForm() {
+		super();
+// TODO Auto-generated constructor stub
+	}
 
 	public String getUsername() {
 		return username;
@@ -102,16 +121,31 @@ class UserForm {
 		this.confirmedPasssword = confirmedPasssword;
 	}
 
-	public UserForm(String username, String password, String confirmedPasssword) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.confirmedPasssword = confirmedPasssword;
+	
+	public String getNom() {
+		return nom;
 	}
 
-	public UserForm() {
-		super();
-// TODO Auto-generated constructor stub
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	
 
 }

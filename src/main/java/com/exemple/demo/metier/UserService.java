@@ -7,8 +7,10 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class UserService implements UserDetailsService {
+public class UserService implements AuthenticationUserDetailsService, UserDetailsService {
 	private final UserRepository userRepository;
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
@@ -36,7 +38,7 @@ public class UserService implements UserDetailsService {
 	this.userRepository = userRepository;
 	}
 	
-	@Override
+	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	Objects.requireNonNull(username);
 	User user = userRepository.findUserWithName(username)
@@ -51,15 +53,17 @@ public class UserService implements UserDetailsService {
 	
 	
 	
-	public User saveUser(String username, String password, String confirmedPassword) {
+	public User saveUser(String nom,String username, String password, String confirmedPassword,String adresse,String tel) {
 		 User appUser = new User();
 		 if (userRepository.findUserWithName(username).isPresent() == true)
 		 throw new RuntimeException("User already exists");
 		 
 		 if (!password.equals(confirmedPassword))
 		 throw new RuntimeException("Please confirm your password");
-		 
+		 appUser.setNom(nom);
 		 appUser.setUsername(username);
+		 appUser.setAdresse(adresse);
+		 appUser.setTel(tel);
 		 Set<Role> roles = new HashSet<Role>();
 		 Role r = new Role("ROLE_USER");
 		 roleRepository.save(r);
@@ -69,5 +73,11 @@ public class UserService implements UserDetailsService {
 		 userRepository.save(appUser);
 		 return appUser;
 		 }
+
+	@Override
+	public UserDetails loadUserDetails(Authentication token) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -75,7 +75,7 @@ public class ProjectApplication implements CommandLineRunner{
 		roleRepository.save(r1);
 		
    
-	User u2=userService.saveUser("user", "user", "user");
+	User u2=userService.saveUser("user", "user", "user", "user", "user", "user");
 	
 	
 	Set<Role> roles = new HashSet<Role>();

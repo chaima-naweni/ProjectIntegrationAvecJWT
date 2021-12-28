@@ -32,8 +32,11 @@ public class User implements Serializable , UserDetails {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer userId;
+private String nom;
 private String username;
 private String password;
+private String adresse;
+private String tel;
 private Boolean enabled;
 
 
@@ -54,12 +57,36 @@ public Boolean getEnabled() {
 public void setEnabled(Boolean enabled) {
 	this.enabled = enabled;
 }
-public User(Integer userId, String username, String password, Set<Role> roles) {
+
+public User(Integer userId, String nom, String username, String password, String adresse, String tel, Boolean enabled,
+		Set<Role> roles) {
 	super();
 	this.userId = userId;
+	this.nom = nom;
 	this.username = username;
 	this.password = password;
+	this.adresse = adresse;
+	this.tel = tel;
+	this.enabled = enabled;
 	this.roles = roles;
+}
+public String getNom() {
+	return nom;
+}
+public void setNom(String nom) {
+	this.nom = nom;
+}
+public String getAdresse() {
+	return adresse;
+}
+public void setAdresse(String adresse) {
+	this.adresse = adresse;
+}
+public String getTel() {
+	return tel;
+}
+public void setTel(String tel) {
+	this.tel = tel;
 }
 public User() {
 	super();
