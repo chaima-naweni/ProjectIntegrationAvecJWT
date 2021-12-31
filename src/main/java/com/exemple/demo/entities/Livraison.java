@@ -19,7 +19,7 @@ public class Livraison implements Serializable{
 	@GeneratedValue
 	private long id;
 	@Column(name="dateLiv")
-	private Date dateLiv;
+	private String dateLiv;
 	@Column(name="adresseLiv")
 	private String adresseLiv;
 
@@ -27,7 +27,7 @@ public class Livraison implements Serializable{
 	@JoinColumn(name = "id_fact")
 	private Facture  facture;
 	
-	public Livraison(long id, Date dateLiv, String adresseLiv) {
+	public Livraison(long id, String dateLiv, String adresseLiv) {
 		super();
 		this.id = id;
 		this.dateLiv = dateLiv;
@@ -43,10 +43,10 @@ public class Livraison implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Date getDateLiv() {
+	public String getDateLiv() {
 		return dateLiv;
 	}
-	public void setDateLiv(Date dateLiv) {
+	public void setDateLiv(String dateLiv) {
 		this.dateLiv = dateLiv;
 	}
 	public String getAdresseLiv() {

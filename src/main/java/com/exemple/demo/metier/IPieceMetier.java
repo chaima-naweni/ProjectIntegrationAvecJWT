@@ -14,6 +14,6 @@ public interface IPieceMetier {
 	public  Piece updatePiece (long id, Piece p);
 	public void deletePiece(long id);
 
-	public Page<Piece> FindPieceByNomP(String nomP,int page, int size);
+	public Page<Piece> FindPieceByCategory(String category,int page, int size);
 
 }

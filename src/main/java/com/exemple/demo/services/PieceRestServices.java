@@ -44,12 +44,12 @@ public class PieceRestServices {
 	public void deletePiece(@PathVariable long id) {
 		pieceMetier.deletePiece(id);
 	}
-	@RequestMapping(value="/pieceByNomP",method = RequestMethod.GET) 
+	@RequestMapping(value="/pieceByCategory",method = RequestMethod.GET) 
 	@ResponseBody
-	public Page<Piece> FindPieceByNomP(@RequestParam String nomP,
+	public Page<Piece> FindPieceByCategory(@RequestParam String category,
 			                           @RequestParam  int page, 
 			                           @RequestParam int size) {
-		return pieceMetier.FindPieceByNomP(nomP, page, size);
+		return pieceMetier.FindPieceByCategory(category, page, size);
 	}
 	
 

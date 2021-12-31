@@ -37,9 +37,13 @@ public class PieceMetierImpl implements IPieceMetier{
 		// TODO Auto-generated method stub
 			Piece PI = pieceRepsitory.findById(id).
 					orElseThrow(() -> new RuntimeException("Piece introuvable avec id : : " +id));
-			PI.setNomP(p.getNomP());
-			PI.setType(p.getType());
-			PI.setPrix(p.getPrix());
+			PI.setName(p.getName());
+			PI.setCategory(p.getCategory());
+			PI.setDescription(p.getDescription());
+			PI.setImage(p.getImage());
+			PI.setPrice(p.getPrice());
+			PI.setQuantity(p.getQuantity());
+			PI.setImages(p.getImages());
 			final Piece updatedPiece =  pieceRepsitory.save(PI); 
 			return updatedPiece;
 	}
@@ -51,9 +55,9 @@ public class PieceMetierImpl implements IPieceMetier{
 	}
 
 	@Override
-	public Page<Piece> FindPieceByNomP(String nomP, int page, int size) {
+	public Page<Piece> FindPieceByCategory(String category, int page, int size) {
 		// TODO Auto-generated method stub
-		return pieceRepsitory.findPieceByNomP(nomP, PageRequest.of(page, size));
+		return pieceRepsitory.findPieceByCategory(category, PageRequest.of(page, size));
 	
 	}
 

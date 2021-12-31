@@ -22,7 +22,7 @@ public class Facture implements Serializable{
 	@GeneratedValue
 	private long id;
 	@Column(name="dateFacture")
-	private Date dateFacture;
+	private String dateFacture;
 	@Column(name="description")
 	private String description;
 	//relation entre facture et admin//
@@ -45,35 +45,78 @@ public class Facture implements Serializable{
 	  @OneToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_cmd")
 		private Commande commande;
-	public Facture(long id, Date dateFacture, String description) {
+
+	public Facture(long id, String dateFacture, String description, Admin admin, Client client, Livraison livraison,
+			Commande commande) {
 		super();
 		this.id = id;
 		this.dateFacture = dateFacture;
 		this.description = description;
+		this.admin = admin;
+		this.client = client;
+		this.livraison = livraison;
+		this.commande = commande;
 	}
+
 	public Facture() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Date getDateFacture() {
+
+	public String getDateFacture() {
 		return dateFacture;
 	}
-	public void setDateFacture(Date dateFacture) {
+
+	public void setDateFacture(String dateFacture) {
 		this.dateFacture = dateFacture;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Livraison getLivraison() {
+		return livraison;
+	}
+
+	public void setLivraison(Livraison livraison) {
+		this.livraison = livraison;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
 	
 }

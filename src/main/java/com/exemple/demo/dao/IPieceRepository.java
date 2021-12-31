@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.exemple.demo.entities.Piece;
 
 public interface IPieceRepository  extends JpaRepository<Piece,Long>{
-	@Query("select p from Piece p where p.nomP like :x")
-	public Page <Piece> findPieceByNomP(@Param("x")String nomP,Pageable p);	
+	@Query("select p from Piece p where p.category like :x")
+	public Page <Piece> findPieceByCategory(@Param("x")String category,Pageable p);	
 
 }

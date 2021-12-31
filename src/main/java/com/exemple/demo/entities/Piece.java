@@ -1,4 +1,4 @@
-package com.exemple.demo.entities;
+ package com.exemple.demo.entities;
 
 import java.io.Serializable;
 
@@ -14,18 +14,31 @@ public class Piece implements Serializable{
 	@Id
 	@GeneratedValue
 	private long id;
-	@Column(name="nomP")
-	private String nomP;
-	@Column(name="type")
-	private String type;
-	@Column(name="prix")
-	private String prix;
-	public Piece(long id, String nomP, String type, String prix) {
+	@Column(name="name")
+	private String name;
+	@Column(name="category")
+	private String category;
+	@Column(name="description")
+	private String description;
+	@Column(name="image")
+	private String image;
+	@Column(name="price")
+	private float price;
+	@Column(name="quantity")
+	private float quantity;
+	@Column(name="images")
+	private String images;
+	public Piece(long id, String name, String category, String description, String image, float price, float quantity,
+			String images) {
 		super();
 		this.id = id;
-		this.nomP = nomP;
-		this.type = type;
-		this.prix = prix;
+		this.name = name;
+		this.category = category;
+		this.description = description;
+		this.image = image;
+		this.price = price;
+		this.quantity = quantity;
+		this.images = images;
 	}
 	public Piece() {
 		super();
@@ -37,24 +50,49 @@ public class Piece implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getNomP() {
-		return nomP;
+	public String getName() {
+		return name;
 	}
-	public void setNomP(String nomP) {
-		this.nomP = nomP;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getType() {
-		return type;
+	public String getCategory() {
+		return category;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-	public String getPrix() {
-		return prix;
+	public String getDescription() {
+		return description;
 	}
-	public void setPrix(String prix) {
-		this.prix = prix;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	public float getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(float quantity) {
+		this.quantity = quantity;
+	}
+	public String getImages() {
+		return images;
+	}
+	public void setImages(String images) {
+		this.images = images;
+	}
+
 	
 	
 
