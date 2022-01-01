@@ -1,11 +1,15 @@
  package com.exemple.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table
@@ -28,6 +32,13 @@ public class Piece implements Serializable{
 	private float quantity;
 	@Column(name="images")
 	private String images;
+
+	
+	/*
+	 * @OneToMany(mappedBy="orders",fetch = FetchType.LAZY) private
+	 * List<Order_Piece> orders = new ArrayList<Order_Piece>();
+	 */
+	 
 	public Piece(long id, String name, String category, String description, String image, float price, float quantity,
 			String images) {
 		super();

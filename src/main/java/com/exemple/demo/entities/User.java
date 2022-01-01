@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -40,6 +41,9 @@ private String adresse;
 private String tel;
 private Boolean enabled;
 
+
+
+ 
 
 @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 @JoinTable(
