@@ -1,8 +1,10 @@
 package com.exemple.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exemple.demo.dao.UserRepository;
+import com.exemple.demo.entities.Piece;
 import com.exemple.demo.entities.User;
 import com.exemple.demo.metier.UserService;
 
@@ -67,7 +71,13 @@ public class UserRestService {
 	public User EditUser(@PathVariable Integer iduser, @RequestBody User user){
 		return userRepository.save(user);
     }
-
+	//yaffichi user belll username
+	@RequestMapping(value="/UserByUsername",method = RequestMethod.GET) 
+	@ResponseBody
+	public Optional<User> FindUserWithName(@RequestParam String username)
+           {
+          return userRepository.findUserWithName(username);
+}
 	
 }
 

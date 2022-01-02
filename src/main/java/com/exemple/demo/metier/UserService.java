@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import com.exemple.demo.dao.RoleRepository;
 import com.exemple.demo.dao.UserRepository;
+import com.exemple.demo.entities.Livraison;
 import com.exemple.demo.entities.Role;
 import com.exemple.demo.entities.User;
 
@@ -74,6 +78,11 @@ public class UserService implements AuthenticationUserDetailsService, UserDetail
 		 userRepository.save(appUser);
 		 return appUser;
 		 }
+	//yaffichy user bel username
+	public Optional<User> FindUserWithName(String username) {
+		// TODO Auto-generated method stub
+		return userRepository.findUserWithName(username);
+	}
 
 	@Override
 	public UserDetails loadUserDetails(Authentication token) throws UsernameNotFoundException {

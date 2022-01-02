@@ -54,10 +54,10 @@ public class OrderPieceMetierImpl implements IOrderPieceMetier{
 	}
 
 	@Override
-	public Page<Order_Piece> FindOrderPieceByIdOrder(long id_order, int page, int size) {
+	public Optional<Order_Piece> FindOrderPieceByIdOrder(long id_order) {
 		// TODO Auto-generated method stub
 		
-		return orderPieceRepo.findOrderPieceByIdOrder(id_order, PageRequest.of(page, size));
+		return orderPieceRepo.findOrderPieceByIdOrder(id_order);
 	}
 
 }

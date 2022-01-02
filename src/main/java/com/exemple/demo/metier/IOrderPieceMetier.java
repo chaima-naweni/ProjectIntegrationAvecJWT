@@ -15,5 +15,5 @@ public interface IOrderPieceMetier {
 	public  Order_Piece updateOrder_Piece(long id, Order_Piece po);
 	public void deleteOrder_Piece(long id);
 
-	public Page<Order_Piece> FindOrderPieceByIdOrder(long id_order,int page, int size);
+	Optional<Order_Piece> FindOrderPieceByIdOrder(long id_order);
 }

@@ -48,8 +48,8 @@ public class OrderPieceRestService {
 	@RequestMapping(value="/OrderPieceByOrderId",method = RequestMethod.GET) 
 	@ResponseBody
 
-	public Page<Order_Piece> FindOrderPieceByIdOrder( @RequestParam long id_order,  @RequestParam int page,@RequestParam  int size) {
-		return orderPieceMerier.FindOrderPieceByIdOrder(id_order, page, size);
+	public Optional<Order_Piece> FindOrderPieceByIdOrder( @RequestParam long id_order) {
+		return orderPieceMerier.FindOrderPieceByIdOrder(id_order);
 	}
 	
 
