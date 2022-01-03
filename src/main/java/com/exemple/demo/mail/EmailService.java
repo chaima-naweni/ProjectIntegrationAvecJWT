@@ -19,7 +19,7 @@ public class EmailService {
 		message.setFrom("chaima.naoueni14@gmail.com");
 		message.setTo("chaima.naoueni14@gmail.com");
 		message.setSubject("test subject");
-		message.setText("test Body");
+		message.setText("Hello , Your Order is Confirmed");
 		
 		javamailsender.send(message);
 		
